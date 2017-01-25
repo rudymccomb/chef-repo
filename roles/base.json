@@ -1,0 +1,16 @@
+{
+  "name": "base",
+  "description": "All servers role",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[packages]",
+    "recipe[ssh]",
+    "recipe[system]",
+    "recipe[firewall]"
+  ]
+}

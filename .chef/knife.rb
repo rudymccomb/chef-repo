@@ -20,3 +20,7 @@ cookbook_copyright     "Cirope S.A."
 cookbook_email         "francocatena@gmail.com"
 cookbook_license       "mit"
 cookbook_path          ["#{current_dir}/../cookbooks"]
+
+# AWS config
+knife[:aws_config_file]     = File.join ENV['HOME'], '.aws', 'config'
+knife[:aws_credential_file] = File.join ENV['HOME'], '.aws', 'credentials'

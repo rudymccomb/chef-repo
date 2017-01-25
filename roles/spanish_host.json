@@ -1,0 +1,17 @@
+{
+  "name": "spanish_host",
+  "description": "Role for Spanish localized severs",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "locale": {
+      "lang": "es_AR.utf8",
+      "lc_all": "es_AR.utf8"
+    }
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[system]"
+  ]
+}

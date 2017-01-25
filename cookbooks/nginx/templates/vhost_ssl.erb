@@ -1,0 +1,15 @@
+<%= render 'vhost/_unicorn.erb' %>
+
+server {
+  listen      80 deferred;
+  server_name <%= @site %> *.<%= @site %>;
+  return      301 https://$host$request_uri;
+}
+
+server {
+  listen 443 deferred ssl http2;
+
+  <%= render 'vhost/_rackserver.erb' %>
+  <%= render 'vhost/_ssl.erb' %>
+  <%= render 'vhost/_rackapp.erb' %>
+}

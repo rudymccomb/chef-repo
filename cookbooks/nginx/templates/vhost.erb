@@ -1,0 +1,8 @@
+<%= render 'vhost/_unicorn.erb' %>
+
+server {
+  listen 80 deferred;
+
+  <%= render 'vhost/_rackserver.erb' %>
+  <%= render 'vhost/_rackapp.erb' %>
+}

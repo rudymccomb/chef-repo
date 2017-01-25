@@ -1,0 +1,30 @@
+# begin _rackapp
+  try_files $uri/index.html $uri.html $uri @app;
+
+  location /private_files/ {
+    alias <%= @rack_dir %>/<%= @site %>/current/private/;
+    internal;
+  }
+
+  location @app {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Accel-Mapping "<%= @rack_dir %>/<%= @site %>/releases/\d{14}/private/=/private_files/";
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    <%= 'proxy_read_timeout 360;' if @long_proxy_timeout %>
+
+    proxy_pass http://unicorn;
+  }
+
+  location ~ /\. {
+    access_log off;
+    log_not_found off;
+    deny all;
+  }
+
+  error_page 500 502 503 504 /500.html;
+  location = /500.html {
+    root <%= @rack_dir %>/<%= @site %>/current/public;
+  }
+  # end _rackapp
