@@ -5,6 +5,8 @@ DEPENDENCIES
     path: cookbooks/nginx
   packages
     path: cookbooks/packages
+  postgres
+    path: cookbooks/postgres
   ssh
     path: cookbooks/ssh
   system
@@ -48,6 +50,7 @@ GRAPH
     compat_resource (>= 12.14.7)
   openssh (2.1.1)
     iptables (>= 1.0)
+  openssl (6.1.1)
   packagecloud (0.2.5)
   packages (0.1.0)
     apt (>= 0.0.0)
@@ -57,6 +60,12 @@ GRAPH
     vim (>= 0.0.0)
     yum (>= 0.0.0)
     yum-epel (>= 0.0.0)
+  postgres (0.1.0)
+    postgresql (>= 0.0.0)
+  postgresql (6.0.1)
+    build-essential (>= 2.0.0)
+    compat_resource (>= 12.16.3)
+    openssl (>= 4.0)
   runit (3.0.4)
     packagecloud (>= 0.0.0)
     yum-epel (>= 0.0.0)

@@ -1,0 +1,13 @@
+{
+  "name": "db",
+  "description": "DB servers role",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[postgres]"
+  ]
+}
