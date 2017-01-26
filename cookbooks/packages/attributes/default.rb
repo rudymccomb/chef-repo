@@ -7,6 +7,7 @@ common = [
   'htop',
   'nmap',
   'tmux',
+  'tzdata',
   'unzip',
   'wget',
   'zsh'
@@ -17,7 +18,8 @@ platform_specific = {
     'libffi'
   ],
   'debian' => [
-    'libffi-dev'
+    'libffi-dev',
+    'locales'
   ],
   'rhel' => [
     'libffi-devel'
