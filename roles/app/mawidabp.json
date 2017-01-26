@@ -17,7 +17,10 @@
         "rhel": [
           "ImageMagick"
         ]
-      }
+      },
+      "recipes": [
+        "packages::redis"
+      ]
     },
     "postgresql": {
       "databases": [
