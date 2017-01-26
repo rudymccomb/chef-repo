@@ -1,0 +1,30 @@
+{
+  "name": "mawidabp_app",
+  "description": "Mawidabp app server role",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "postgresql": {
+      "databases": [
+        {
+          "name": "mawidabp_production",
+          "password": "mawidabp_production",
+          "owner": "mawidabp_production"
+        }
+      ]
+    },
+    "nginx": {
+      "sites": [
+        { "name": "mawidabp.com" }
+      ]
+    }
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "role[base]",
+    "role[spanish_host]",
+    "role[web]",
+    "role[db]"
+  ]
+}
