@@ -33,8 +33,6 @@
   },
   "run_list": [
     "role[base]",
-    "role[spanish_host]",
-    "role[web]",
-    "role[db]"
+    "role[spanish_host]"
   ]
 }
