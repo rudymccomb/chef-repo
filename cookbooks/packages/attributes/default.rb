@@ -27,3 +27,5 @@ platform_specific = {
 }
 
 default['package-list'] = common + platform_specific[platform_family]
+
+default['nodejs']['install_method'] = 'binary'

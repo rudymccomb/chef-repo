@@ -6,7 +6,7 @@ description 'Installs/Configures the system base packages'
 long_description 'Installs/Configures the system base packages'
 version '0.1.0'
 
-%w(apt yum yum-epel build-essential git ntp vim).each do |cookbook|
+%w(apt yum yum-epel build-essential git nodejs ntp vim).each do |cookbook|
   depends cookbook
 end
 

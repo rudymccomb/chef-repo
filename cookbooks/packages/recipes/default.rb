@@ -11,6 +11,7 @@ end
 include_recipe 'build-essential'
 include_recipe 'git'
 include_recipe 'ntp'
+include_recipe 'nodejs'
 include_recipe 'vim'
 
 Array(node['package-list']).each do |package_name|
