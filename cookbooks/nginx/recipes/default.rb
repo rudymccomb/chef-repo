@@ -1,6 +1,6 @@
 include_recipe 'chef_nginx'
 
-sites         = Array node['nginx']['sites'] || node['fqdn']
+sites         = Array node['nginx']['sites'] || { 'name' => node['fqdn'] }
 config_dir    = node['nginx']['dir']
 is_production = node['virtualization']['system'] != 'vbox'
 
@@ -13,9 +13,9 @@ if is_production
 end
 
 sites.each do |site|
-  nginx_site site do
+  nginx_site site['name'] do
     template  is_production ? 'vhost_ssl.erb' : 'vhost.erb'
-    variables site: site,
+    variables site: site['name'],
               rack_dir: node['nginx']['rack_dir'],
               sock: node['nginx']['sock_path'],
               long_proxy_timeout: node['nginx']['long_proxy_timeout']
