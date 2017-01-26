@@ -1,5 +1,6 @@
 include_recipe 'system::pre_checks'
-include_recipe 'locale'
+include_recipe 'system::environment'
+include_recipe 'system::locale'
 include_recipe 'system::users'
 include_recipe 'system::sudo'
 include_recipe 'system::sysctl'
