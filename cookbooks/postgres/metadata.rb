@@ -4,6 +4,7 @@ maintainer_email 'francocatena@gmail.com'
 license 'mit'
 description 'Installs/Configures PostgreSQL'
 long_description 'Installs/Configures PostgreSQL'
+depends 'database'
 depends 'postgresql'
 version '0.1.0'
 
