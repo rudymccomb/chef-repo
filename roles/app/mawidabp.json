@@ -4,6 +4,21 @@
   "chef_type": "role",
   "json_class": "Chef::Role",
   "default_attributes": {
+    "nginx": {
+      "sites": [
+        { "name": "mawidabp.com" }
+      ]
+    },
+    "packages": {
+      "list": {
+        "debian": [
+          "imagemagick"
+        ],
+        "rhel": [
+          "ImageMagick"
+        ]
+      }
+    },
     "postgresql": {
       "databases": [
         {
@@ -11,11 +26,6 @@
           "password": "mawidabp_production",
           "owner": "mawidabp_production"
         }
-      ]
-    },
-    "nginx": {
-      "sites": [
-        { "name": "mawidabp.com" }
       ]
     }
   },
