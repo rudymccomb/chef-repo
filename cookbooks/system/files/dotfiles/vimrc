@@ -1,0 +1,134 @@
+set nocompatible
+
+if has('syntax')
+  syntax on
+endif
+
+if has('autocmd')
+  filetype plugin indent on
+  augroup vimrcEx
+    autocmd!
+    " Remember last position in file
+    autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
+
+    autocmd! BufRead,BufNewFile *.cap setfiletype ruby
+  augroup END
+endif
+
+if has('multi_byte')
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  set fileencodings=ucs-bom,utf-8,latin1
+  set nobomb
+endif
+
+set t_Co=256
+colorscheme industry
+
+set ruler
+set cursorline
+
+if exists('+relativenumber') && exists('+number')
+  set relativenumber
+  set number
+end
+
+" Tab-completion in command-line mode
+set wildmode=full
+set wildmenu
+
+set autoread
+
+set nrformats-=octal
+
+" Tab behavior
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set shiftround
+
+set hlsearch
+set incsearch
+set showmatch
+set hidden
+set ttyfast
+set history=10000
+set pastetoggle=<C-p>
+
+" Maintain undo history between sessions
+if exists('+undofile') && exists('+undodir')
+  set undofile
+  set undodir=~/.vim/undodir
+endif
+
+if exists('+writebackup')
+  set nobackup
+  set writebackup
+endif
+
+set directory=~/.vim/backup
+
+set ignorecase smartcase
+
+set showcmd
+
+" Status line
+set showtabline=2
+set laststatus=2
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
+
+let mapleader=','
+
+set timeout
+set timeoutlen=1000
+set ttimeoutlen=100
+
+" Quit, save and _only_ shortcuts
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>x :x<CR>
+nnoremap <Leader>a :wa<CR>
+nnoremap <Leader>o :only<CR>
+
+" Aesthetic and navigation
+nnoremap <Leader>n :set relativenumber!<CR>
+nnoremap <Leader><Leader> :nohlsearch<CR>
+nnoremap <Leader><CR> o<Esc>
+nnoremap <Leader>b <C-^>
+
+" Smart way to move between windows
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" Split windows
+nnoremap <Leader>- :split<CR><C-w>j
+nnoremap <Leader><Bar> :vsplit<CR><C-w>l
+
+" Resize windows
+nnoremap <C-_> <C-w>_
+
+" Tab shortcuts
+nnoremap <C-t> :tabnew<CR>
+nnoremap <S-h> gT
+nnoremap <S-l> gt
+
+" Shortcuts for opening file in same directory as current file
+cnoremap <expr> %%  getcmdtype() == ':' ? escape(expand('%:h'), ' \').'/' : '%%'
+
+map <Leader>ew :edit %%
+map <Leader>es :split %%
+map <Leader>ev :vsplit %%
+map <Leader>et :tabedit %%
+
+" Make Y consistent with C and D.  See :help Y.
+nnoremap Y y$
+
+" Navigate through quickfix
+map <F3> :cprev<CR>
+map <F4> :cnext<CR>
