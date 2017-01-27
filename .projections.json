@@ -1,0 +1,58 @@
+{
+  "cookbooks/*": {
+    "type": "cookbook"
+  },
+  "cookbooks/*/metadata.rb": {
+    "type": "metadata"
+  },
+  "cookbooks/*/attributes/default.rb": {
+    "type": "attribute",
+    "alternate": "cookbooks/{}/recipes/default.rb"
+  },
+  "cookbooks/**/attributes/*.rb": {
+    "type": "attribute",
+    "alternate": "cookbooks/{dirname}/recipes/{basename}.rb"
+  },
+  "cookbooks/*/recipes/default.rb": {
+    "type": "recipe",
+    "alternate": "cookbooks/{}/attributes/default.rb"
+  },
+  "cookbooks/**/recipes/*.rb": {
+    "type": "recipe",
+    "alternate": "cookbooks/{dirname}/attributes/{basename}.rb"
+  },
+  "data_bags/*.json": {
+    "type": "databag",
+    "dispatch": "knife data bag from file {dirname} {basename}.json",
+    "template": "{open}  \"id\": \"{}\"{close}"
+  },
+  "environments/*.json": {
+    "type": "environment",
+    "template": [
+      "{open}",
+      "  \"name\": \"{}\",",
+      "  \"description\": \"{uppercase} environment\",",
+      "  \"chef_type\": \"environment\",",
+      "  \"json_class\": \"Chef::Environment\",",
+      "  \"default_attributes\": {open}\n  {close},",
+      "  \"override_attributes\": {open}\n  {close},",
+      "  \"run_list\": [\n  ]",
+      "{close}"
+    ]
+  },
+  "roles/*.json": {
+    "type": "role",
+    "dispatch": "knife role from file {}.json",
+    "template": [
+      "{open}",
+      "  \"name\": \"{}\",",
+      "  \"description\": \"{uppercase} role\",",
+      "  \"chef_type\": \"role\",",
+      "  \"json_class\": \"Chef::Role\",",
+      "  \"default_attributes\": {open}\n  {close},",
+      "  \"override_attributes\": {open}\n  {close},",
+      "  \"run_list\": [\n  ]",
+      "{close}"
+    ]
+  }
+}
