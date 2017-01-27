@@ -7,6 +7,8 @@ DEPENDENCIES
     path: cookbooks/packages
   postgres
     path: cookbooks/postgres
+  rack_app
+    path: cookbooks/rack_app
   ssh
     path: cookbooks/ssh
   system
@@ -81,6 +83,13 @@ GRAPH
     build-essential (>= 2.0.0)
     compat_resource (>= 12.16.3)
     openssl (>= 4.0)
+  rack_app (0.1.0)
+    rbenv (>= 0.0.0)
+  rbenv (1.7.1)
+    apt (>= 0.0.0)
+    build-essential (>= 0.0.0)
+    git (>= 0.0.0)
+    ohai (>= 1.1)
   runit (3.0.5)
     packagecloud (>= 0.0.0)
     yum-epel (>= 0.0.0)
