@@ -1,0 +1,33 @@
+[Unit]
+Description=unicorn
+Requires=<%= @platform_family == 'debian' ? 'redis-server' : 'redis' %>.service
+Wants=postgresql.service
+After=<%= @platform_family == 'debian' ? 'redis-server' : 'redis' %>.service postgresql.service
+
+[Service]
+Type=forking
+PermissionsStartOnly=true
+User=<%= @user %>
+Group=<%= @group %>
+WorkingDirectory=<%= @base_dir %>/current
+Environment=RAILS_ENV=<%= @is_production ? 'production' : 'sandbox' %>
+Environment=BUNDLE_GEMFILE=<%= @base_dir %>/current/Gemfile
+SyslogIdentifier=unicorn
+KillSignal=SIGQUIT
+PIDFile=/tmp/unicorn.pid
+ExecStartPre=/bin/mkdir -p /run/unicorn
+ExecStartPre=/bin/chown -R <%= @user %>:<%= @group %> /run/unicorn
+
+ExecStart=<%= @rbenv_root %>/shims/bundle exec "\
+          <%= @base_dir %>/current/bin/unicorn -D -c \
+          <%= @base_dir %>/current/config/unicorn.rb -E \
+          <%= @is_production ? 'production' : 'sandbox' %>"
+
+ExecStop=/bin/kill -s QUIT $MAINPID
+ExecReload=/bin/kill -s USR2 $MAINPID
+
+RestartSec=1
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

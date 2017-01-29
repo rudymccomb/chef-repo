@@ -1,0 +1,22 @@
+[Unit]
+Description=sidekiq
+Requires=<%= @platform_family == 'debian' ? 'redis-server' : 'redis' %>.service
+After=<%= @platform_family == 'debian' ? 'redis-server' : 'redis' %>.service syslog.target network.target
+
+[Service]
+Type=forking
+User=<%= @user %>
+Group=<%= @group %>
+UMask=0002
+WorkingDirectory=<%= @base_dir %>/current
+PIDFile=<%= @base_dir %>/current/tmp/pids/sidekiq-0.pid
+
+ExecStart=<%= @rbenv_root %>/shims/bundle exec \
+  "sidekiq -e <%= @is_production ? 'production' : 'sandbox' %> \
+  -C config/sidekiq.yml -L log/sidekiq.log -P tmp/pids/sidekiq-0.pid -i 0 -d"
+
+RestartSec=1
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

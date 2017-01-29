@@ -26,9 +26,15 @@
       "databases": [
         {
           "name": "mawidabp_production",
-          "password": "mawidabp_production",
-          "owner": "mawidabp_production"
+          "password": "mawidabp",
+          "owner": "mawidabp"
         }
+      ]
+    },
+    "rack_app": {
+      "base_dir": "/var/www/mawidabp.com",
+      "recipes": [
+        "rack_app::sidekiq"
       ]
     }
   },
