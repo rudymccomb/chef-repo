@@ -21,6 +21,9 @@
     "type": "recipe",
     "alternate": "cookbooks/{dirname}/attributes/{basename}.rb"
   },
+  "cookbooks/**/templates/*.erb": {
+    "type": "template"
+  },
   "data_bags/*.json": {
     "type": "databag",
     "dispatch": "knife data bag from file {dirname} {basename}.json",
