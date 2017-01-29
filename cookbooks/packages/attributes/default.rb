@@ -31,4 +31,8 @@ node_list     = node['packages']['list'] && node['packages']['list'][platform_fa
 
 default['package-list'] = common + platform_list + Array(node_list)
 
+default['apt']['compile_time_update'] = true
+
+default['build-essential']['compile_time'] = true
+
 default['nodejs']['install_method'] = 'binary'
