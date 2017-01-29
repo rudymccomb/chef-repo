@@ -26,7 +26,7 @@ if has('multi_byte')
 endif
 
 set t_Co=256
-colorscheme industry
+colorscheme elflord
 
 set ruler
 set cursorline
