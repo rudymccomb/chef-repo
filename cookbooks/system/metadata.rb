@@ -7,6 +7,7 @@ long_description 'Installs/Configures system'
 depends 'build-essential'
 version '0.1.0'
 depends 'locale'
+depends 'selinux'
 depends 'sudo'
 depends 'swap_tuning'
 
