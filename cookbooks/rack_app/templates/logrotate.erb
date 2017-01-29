@@ -1,0 +1,11 @@
+# Rotate application logs based on file size
+# Rotate log if file greater than 20 MB
+<%= @base_dir %>/shared/log/*.log {
+  size=20M
+  missingok
+  rotate 52
+  compress
+  delaycompress
+  notifempty
+  copytruncate
+}

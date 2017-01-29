@@ -32,6 +32,7 @@
       ]
     },
     "rack_app": {
+      "name": "mawidabp",
       "base_dir": "/var/www/mawidabp.com",
       "recipes": [
         "rack_app::sidekiq"
