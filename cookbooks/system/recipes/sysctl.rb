@@ -1,6 +1,11 @@
 local_conf = '/etc/sysctl.d/99-local.conf'
 memory     = node['memory']['total'].to_i
 
+execute 'sysctl' do
+  command "sysctl -p #{local_conf}"
+  action  :nothing
+end
+
 template local_conf do
   source    'sysctl-local.conf.erb'
   variables memory: memory
@@ -8,9 +13,4 @@ template local_conf do
   group     'root'
   mode      '0644'
   notifies  :run, 'execute[sysctl]', :immediately
-end
-
-execute 'sysctl' do
-  command "sysctl -p #{local_conf}"
-  action  :nothing
 end

@@ -1,8 +1,22 @@
+deployer_group = value_for_platform_family(
+  'rhel'    => 'nginx',
+  'default' => 'www-data'
+)
+
+group deployer_group
+
 search(:users, "*:*").each do |user_data|
   login = user_data['id']
   home  = login == 'root' ? '/root' : "/home/#{login}"
+  group = user_data['deployer'] && deployer_group
+
+  ohai 'reload' do
+    action :nothing
+    plugin 'etc'
+  end
 
   user login do
+    group       user_data['group'] || group
     shell       user_data['shell']
     comment     user_data['comment']
     home        home
@@ -10,11 +24,7 @@ search(:users, "*:*").each do |user_data|
     manage_home true
   end
 
-  ohai 'reload' do
-    action :nothing
-  end
-
-  group = node['etc']['passwd'][login]['gid']
+  group = node['etc']['passwd'][login] && node['etc']['passwd'][login]['gid']
 
   %w(.ssh .vim .vim/backup .vim/undodir).each do |dir|
     directory "#{home}/#{dir}" do
