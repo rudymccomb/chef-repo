@@ -16,7 +16,7 @@ sites.each do |site|
   nginx_site site['name'] do
     template  is_production ? 'vhost_ssl.erb' : 'vhost.erb'
     variables site:               site['name'],
-              rack_dir:           node['nginx']['rack_dir'],
+              www_dir:            node['nginx']['www_dir'],
               sock:               node['nginx']['sock_path'],
               long_proxy_timeout: node['nginx']['long_proxy_timeout']
   end
