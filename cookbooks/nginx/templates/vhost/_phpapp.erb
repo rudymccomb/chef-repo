@@ -1,0 +1,25 @@
+# begin _phpapp
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+
+  location ~ .php/ { ## Forward paths like /js/index.php/x.js to relevant handler
+    rewrite ^(.*.php)/ $1 last;
+  }
+
+  location ~* \.php$ {
+    fastcgi_index index.php;
+    fastcgi_pass  unix:<%= @sock %>;
+
+    include       fastcgi_params;
+
+    fastcgi_param SCRIPT_NAME     $fastcgi_script_name;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+  }
+
+  location ~ /\. {
+    access_log off;
+    log_not_found off;
+    deny all;
+  }
+  # end _phpapp

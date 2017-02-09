@@ -1,8 +1,8 @@
-<%= render 'vhost/_unicorn.erb' %>
+<%= render 'vhost/_app_stream.erb' if @template == 'rack' %>
 
 server {
   listen 80 deferred;
 
-  <%= render 'vhost/_rackserver.erb' %>
-  <%= render 'vhost/_rackapp.erb' %>
+  <%= render "vhost/_#{@template}server.erb" %>
+  <%= render "vhost/_#{@template}app.erb" %>
 }
