@@ -1,4 +1,6 @@
 DEPENDENCIES
+  chef_server
+    path: cookbooks/chef_server
   firewall
     path: cookbooks/firewall
   nginx
@@ -17,8 +19,7 @@ DEPENDENCIES
     path: cookbooks/system
 
 GRAPH
-  apt (5.1.0)
-    compat_resource (>= 12.16.3)
+  apt (6.0.0)
   ark (2.2.1)
     build-essential (>= 0.0.0)
     seven_zip (>= 0.0.0)
@@ -27,6 +28,8 @@ GRAPH
     compat_resource (>= 12.16.3)
     mingw (>= 1.1)
     seven_zip (>= 0.0.0)
+  chef-ingredient (0.21.3)
+    compat_resource (>= 12.16.3)
   chef_nginx (5.0.6)
     build-essential (>= 0.0.0)
     compat_resource (>= 12.16.3)
@@ -34,6 +37,8 @@ GRAPH
     runit (>= 1.6.0)
     yum-epel (>= 0.0.0)
     zypper (>= 0.0.0)
+  chef_server (0.1.0)
+    chef-ingredient (>= 0.0.0)
   compat_resource (12.16.3)
   database (6.1.1)
     postgresql (>= 1.0.0)
