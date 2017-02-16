@@ -6,6 +6,7 @@ description 'Installs/Configures nginx'
 long_description 'Installs/Configures nginx'
 conflicts 'apache2'
 depends 'chef_nginx'
+depends 'openssl'
 version '0.1.0'
 
 # The `issues_url` points to the location where issues for this cookbook are

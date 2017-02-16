@@ -5,10 +5,10 @@ config_dir    = node['nginx']['dir']
 is_production = node['virtualization']['system'] != 'vbox'
 
 if is_production
-  execute 'create 2048 dhparams' do
-    command  "openssl dhparam -out #{config_dir}/dhparams.pem 2048"
-    creates  "#{config_dir}/dhparams.pem"
-    notifies :reload, 'service[nginx]', :delayed
+  openssl_dhparam "#{config_dir}/dhparams.pem" do
+    key_length 2048
+    notifies   :reload, 'service[nginx]', :delayed
+    not_if     { File.exist? "#{config_dir}/dhparams.pem" }
   end
 end
 
