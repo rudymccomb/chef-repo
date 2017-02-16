@@ -17,6 +17,10 @@
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
   }
 
+  location ~ /\.well-known/acme-challenge {
+    root <%= @www_dir %>;
+  }
+
   location ~ /\. {
     access_log off;
     log_not_found off;

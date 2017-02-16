@@ -17,6 +17,10 @@
     proxy_pass http://app_stream;
   }
 
+  location ~ /\.well-known/acme-challenge {
+    root <%= @www_dir %>;
+  }
+
   location ~ /\. {
     access_log off;
     log_not_found off;
