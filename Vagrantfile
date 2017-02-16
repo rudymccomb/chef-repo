@@ -1,5 +1,5 @@
 Vagrant.configure '2' do |config|
-  config.vm.box               = 'debian/jessie64'
+  config.vm.box               = 'ubuntu/precise64'
   config.omnibus.chef_version = :latest
 
   config.vm.network 'public_network'
