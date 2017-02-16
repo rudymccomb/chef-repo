@@ -5,6 +5,7 @@ config_options = [
 ]
 
 if node['roles'].include?('web')
+  config_options << "bookshelf['vip_port'] = 8443"
   config_options << "nginx['non_ssl_port'] = 8080"
   config_options << "nginx['ssl_port']     = 8443"
 end
