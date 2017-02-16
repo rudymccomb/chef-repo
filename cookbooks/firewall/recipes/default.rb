@@ -12,4 +12,9 @@ if node['roles'].include?('web') || node['roles'].include?('chef_server')
   iptables_rule 'https'
 end
 
+if node['roles'].include?('chef_server')
+  iptables_rule 'http_alt'
+  iptables_rule 'https_alt'
+end
+
 include_recipe 'fail2ban'
