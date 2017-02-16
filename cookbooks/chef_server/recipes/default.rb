@@ -20,7 +20,8 @@ ingredient_config 'chef-server' do
 end
 
 chef_ingredient 'manage' do
-  action :install
+  action   :install
+  config   'disable_sign_up true'
   notifies :reconfigure, 'chef_ingredient[chef-server]', :immediately
 end
 
