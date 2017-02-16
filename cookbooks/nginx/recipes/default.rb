@@ -1,4 +1,5 @@
 include_recipe 'chef_nginx'
+include_recipe 'openssl::upgrade'
 
 sites         = Array node['nginx']['sites'] || [{ 'name' => node['fqdn'] }]
 config_dir    = node['nginx']['dir']
