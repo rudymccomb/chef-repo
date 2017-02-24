@@ -8,6 +8,7 @@
   "override_attributes": {
   },
   "run_list": [
+    "recipe[chef_client]",
     "recipe[packages]",
     "recipe[ssh]",
     "recipe[system]",
