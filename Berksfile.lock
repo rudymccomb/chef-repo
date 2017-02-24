@@ -1,4 +1,6 @@
 DEPENDENCIES
+  chef_client
+    path: cookbooks/chef_client
   chef_server
     path: cookbooks/chef_server
   firewall
@@ -32,8 +34,13 @@ GRAPH
   build-essential (8.0.0)
     mingw (>= 1.1)
     seven_zip (>= 0.0.0)
-  chef-ingredient (0.21.4)
-    compat_resource (>= 12.16.3)
+  chef-client (7.1.0)
+    cron (>= 1.7.0)
+    logrotate (>= 1.9.0)
+    windows (>= 1.42.0)
+  chef-ingredient (1.0.1)
+  chef_client (0.1.0)
+    chef-client (>= 0.0.0)
   chef_nginx (5.0.7)
     build-essential (>= 0.0.0)
     compat_resource (>= 12.16.3)
@@ -44,6 +51,7 @@ GRAPH
   chef_server (0.1.0)
     chef-ingredient (>= 0.0.0)
   compat_resource (12.16.3)
+  cron (3.0.0)
   database (6.1.1)
     postgresql (>= 1.0.0)
   dmg (3.1.0)
@@ -66,6 +74,8 @@ GRAPH
     homebrew (>= 0.0.0)
     windows (>= 0.0.0)
   locale (2.0.0)
+  logrotate (2.1.0)
+    compat_resource (>= 0.0.0)
   mingw (1.2.5)
     compat_resource (>= 12.16.3)
     seven_zip (>= 0.0.0)
@@ -82,8 +92,7 @@ GRAPH
     homebrew (>= 0.0.0)
     yum-epel (>= 0.0.0)
   ntp (3.3.1)
-  ohai (4.2.3)
-    compat_resource (>= 12.14.7)
+  ohai (5.0.0)
   openssh (2.1.1)
     iptables (>= 1.0)
   openssl (6.1.1)
@@ -97,7 +106,7 @@ GRAPH
     vim (>= 0.0.0)
     yum (>= 0.0.0)
     yum-epel (>= 0.0.0)
-  php (2.2.0)
+  php (2.2.1)
     build-essential (>= 0.0.0)
     iis (>= 0.0.0)
     mysql (>= 6.0.0)
