@@ -21,7 +21,7 @@ ingredient_config 'chef-server' do
 end
 
 chef_ingredient 'manage' do
-  action   :install
+  action   :upgrade
   config   'disable_sign_up true'
   notifies :reconfigure, 'chef_ingredient[chef-server]', :immediately
 end
@@ -29,13 +29,4 @@ end
 chef_ingredient 'manage' do
   action :reconfigure
   accept_license true
-end
-
-chef_ingredient 'push-jobs-server' do
-  action :install
-  notifies :reconfigure, 'chef_ingredient[chef-server]', :immediately
-end
-
-chef_ingredient 'push-jobs-server' do
-  action :reconfigure
 end
