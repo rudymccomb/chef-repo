@@ -1,4 +1,4 @@
-<%= render 'vhost/_app_stream.erb' if @template == 'rack' %>
+<%= render "#{@template}/_stream.erb" if @template == 'rack' %>
 
 server {
   listen      80 deferred;
@@ -9,7 +9,7 @@ server {
 server {
   listen 443 deferred ssl http2;
 
-  <%= render "vhost/_#{@template}server.erb" %>
-  <%= render "vhost/_ssl.erb" %>
-  <%= render "vhost/_#{@template}app.erb" %>
+  <%= render "#{@template}/_server.erb" %>
+  <%= render "_ssl.erb" %>
+  <%= render "#{@template}/_app.erb" %>
 }
