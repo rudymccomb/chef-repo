@@ -4,6 +4,9 @@
   "chef_type": "role",
   "json_class": "Chef::Role",
   "default_attributes": {
+    "nginx": {
+      "template": "chef"
+    }
   },
   "override_attributes": {
   },
