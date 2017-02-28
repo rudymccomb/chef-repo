@@ -43,6 +43,21 @@
       "{close}"
     ]
   },
+  "nodes/*.json": {
+    "type": "node",
+    "dispatch": "knife node from file {}.json",
+    "template": [
+      "{open}",
+      "  \"name\": \"{}\",",
+      "  \"description\": \"{uppercase} node\",",
+      "  \"chef_type\": \"node\",",
+      "  \"json_class\": \"Chef::Node\",",
+      "  \"default_attributes\": {open}\n  {close},",
+      "  \"override_attributes\": {open}\n  {close},",
+      "  \"run_list\": [\n  ]",
+      "{close}"
+    ]
+  },
   "roles/*.json": {
     "type": "role",
     "dispatch": "knife role from file {}.json",
