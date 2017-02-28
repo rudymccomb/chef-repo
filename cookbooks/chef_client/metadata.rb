@@ -5,6 +5,7 @@ license 'mit'
 description 'Installs/Configures chef_client'
 long_description 'Installs/Configures chef_client'
 depends 'chef-client'
+depends 'chef-ingredient'
 version '0.1.0'
 
 # The `issues_url` points to the location where issues for this cookbook are
