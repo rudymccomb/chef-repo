@@ -1,8 +1,8 @@
 [Unit]
 Description=unicorn
-Requires=<%= @platform_family == 'debian' ? 'redis-server' : 'redis' %>.service
+Requires=<%= @requires.join(' ') %>
 Wants=postgresql.service
-After=<%= @platform_family == 'debian' ? 'redis-server' : 'redis' %>.service postgresql.service
+After=postgresql.service <%= @requires.join(' ') %>
 
 [Service]
 Type=forking
