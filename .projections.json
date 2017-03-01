@@ -52,8 +52,9 @@
       "  \"description\": \"{uppercase} node\",",
       "  \"chef_type\": \"node\",",
       "  \"json_class\": \"Chef::Node\",",
-      "  \"default_attributes\": {open}\n  {close},",
-      "  \"override_attributes\": {open}\n  {close},",
+      "  \"default\": {open}\n  {close},",
+      "  \"normal\": {open}\n  {close},",
+      "  \"override\": {open}\n  {close},",
       "  \"run_list\": [\n  ]",
       "{close}"
     ]
