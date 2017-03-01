@@ -7,12 +7,12 @@ iptables_rule 'postfix'
 
 iptables_rule 'ssh'
 
-if node['roles'].include?('web') || node['roles'].include?('chef_server')
+if node.role?('web') || node.role?('chef_server')
   iptables_rule 'http'
   iptables_rule 'https'
 end
 
-if node['roles'].include?('chef_server')
+if node.role?('chef_server')
   iptables_rule 'http_alt'
   iptables_rule 'https_alt'
 end

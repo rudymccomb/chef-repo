@@ -4,7 +4,7 @@ config_options = [
   "nginx['ssl_certificate_key'] = '/etc/ssl/private/#{node['fqdn']}.key'"
 ]
 
-if node['roles'].include?('web')
+if node.role?('web')
   config_options << "bookshelf['vip_port'] = 8443"
   config_options << "nginx['non_ssl_port'] = 8080"
   config_options << "nginx['ssl_port']     = 8443"
