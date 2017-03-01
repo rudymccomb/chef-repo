@@ -26,6 +26,7 @@ sites.each_with_index do |site, i|
     variables site:               site['name'],
               www_dir:            node['nginx']['www_dir'],
               long_proxy_timeout: node['nginx']['long_proxy_timeout'],
+              disable_hsts:       node['nginx']['disable_hsts'],
               template:           template,
               sock:               sock,
               deferred:           i == 0

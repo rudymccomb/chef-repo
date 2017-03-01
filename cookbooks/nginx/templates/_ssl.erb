@@ -15,5 +15,7 @@
   ssl_dhparam <%= node['nginx']['dir'] %>/dhparams.pem;
 
   add_header X-Content-Type-Options nosniff always;
+<%- unless @disable_hsts %>
   add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+<%- end %>
   # end _ssl
