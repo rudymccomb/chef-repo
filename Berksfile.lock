@@ -42,7 +42,7 @@ GRAPH
   chef_client (0.1.0)
     chef-client (>= 0.0.0)
     chef-ingredient (>= 0.0.0)
-  chef_nginx (5.0.7)
+  chef_nginx (5.1.0)
     build-essential (>= 0.0.0)
     compat_resource (>= 12.16.3)
     ohai (>= 4.1.0)
