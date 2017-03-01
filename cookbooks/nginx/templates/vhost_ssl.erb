@@ -1,13 +1,13 @@
 <%= render "#{@template}/_stream.erb" if @template == 'rack' %>
 
 server {
-  listen      80 deferred;
+  listen      80<%= ' deferred' if @deferred %>;
   server_name <%= @site %> *.<%= @site %>;
   return      301 https://$host$request_uri;
 }
 
 server {
-  listen 443 deferred ssl http2;
+  listen 443<%= ' deferred' if @deferred %> ssl http2;
 
   <%= render "#{@template}/_server.erb" %>
   <%= render "_ssl.erb" %>

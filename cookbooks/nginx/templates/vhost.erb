@@ -1,7 +1,7 @@
 <%= render "#{@template}/_stream.erb" if @template == 'rack' %>
 
 server {
-  listen 80 deferred;
+  listen 80<%= ' deferred' if @deferred %>;
 
   <%= render "#{@template}/_server.erb" %>
   <%= render "#{@template}/_app.erb" %>
