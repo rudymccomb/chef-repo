@@ -3,6 +3,10 @@ key_path_group = value_for_platform_family(
   'default' => 'root'
 )
 
+if node.platform_family?('debian')
+  group 'ssl-cert'
+end
+
 directory node['ssl']['crt_path'] do
   owner 'root'
   group 'root'
