@@ -9,6 +9,10 @@ mysql_service 'default' do
   action [:create, :start]
 end
 
+mysql2_chef_gem 'default' do
+  action :install
+end
+
 Array(node['mysql_server']['databases']).each do |database|
   unless database['owner'] == 'root'
     mysql_database_user database['owner'] do
