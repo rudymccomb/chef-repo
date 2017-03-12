@@ -1,5 +1,5 @@
 mysql_connection_info = {
-  host:     'localhost',
+  host:     '127.0.0.1',
   username: 'root',
   password: node['mysql_server']['initial_root_password']
 }
