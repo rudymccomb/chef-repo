@@ -4,6 +4,7 @@ maintainer_email 'francocatena@gmail.com'
 license 'mit'
 description 'Installs/Configures mysql_server'
 long_description 'Installs/Configures mysql_server'
+depends 'database'
 depends 'mysql'
 version '0.1.0'
 
