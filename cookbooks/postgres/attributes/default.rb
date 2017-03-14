@@ -1,5 +1,6 @@
 default['postgresql']['enable_pgdg_apt']      = true
 default['postgresql']['enable_pgdg_yum']      = true
+default['postgresql']['config']['ssl']        = false
 default['postgresql']['version']              = '9.6'
 default['postgresql']['dir']                  = "/etc/postgresql/#{node['postgresql']['version']}/main"
 default['postgresql']['password']['postgres'] = 'postgres'
