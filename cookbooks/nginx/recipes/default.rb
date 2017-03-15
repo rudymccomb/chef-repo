@@ -25,10 +25,10 @@ sites.each_with_index do |site, i|
   nginx_site site['name'] do
     template  is_production ? 'vhost_ssl.erb' : 'vhost.erb'
     variables site:               site['name'],
+              dataroot:           site['dataroot'],
               www_dir:            node['nginx']['www_dir'],
               long_proxy_timeout: node['nginx']['long_proxy_timeout'],
               disable_hsts:       node['nginx']['disable_hsts'],
-              dataroot:           node['nginx']['dataroot'],
               site_dir:           site_dir,
               template:           template,
               sock:               sock,
