@@ -28,6 +28,7 @@ sites.each_with_index do |site, i|
               www_dir:            node['nginx']['www_dir'],
               long_proxy_timeout: node['nginx']['long_proxy_timeout'],
               disable_hsts:       node['nginx']['disable_hsts'],
+              dataroot:           node['nginx']['dataroot'],
               site_dir:           site_dir,
               template:           template,
               sock:               sock,

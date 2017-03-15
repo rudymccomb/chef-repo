@@ -7,12 +7,23 @@
     rewrite ^(.*.php)/ $1 last;
   }
 
+  <%- if @dataroot %>
+  location /dataroot/ {
+    internal;
+
+    alias <%= @dataroot %>/;
+  }
+  <%- end %>
+
   location ~* \.php$ {
     fastcgi_index index.php;
     fastcgi_pass  unix:<%= @sock %>;
 
+    fastcgi_split_path_info  ^(.+\.php)(/.+)$;
+
     include       fastcgi_params;
 
+    fastcgi_param PATH_INFO       $fastcgi_path_info;
     fastcgi_param SCRIPT_NAME     $fastcgi_script_name;
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
   }
