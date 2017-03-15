@@ -20,6 +20,7 @@ end
 sites.each_with_index do |site, i|
   template = site['template'] || node['nginx']['template']
   sock     = site['sock']     || default_sock[template]
+  site_dir = site['site_dir'] || "#{node['nginx']['www_dir']}/#{site['name']}"
 
   nginx_site site['name'] do
     template  is_production ? 'vhost_ssl.erb' : 'vhost.erb'
@@ -27,6 +28,7 @@ sites.each_with_index do |site, i|
               www_dir:            node['nginx']['www_dir'],
               long_proxy_timeout: node['nginx']['long_proxy_timeout'],
               disable_hsts:       node['nginx']['disable_hsts'],
+              site_dir:           site_dir,
               template:           template,
               sock:               sock,
               deferred:           i == 0
