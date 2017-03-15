@@ -1,4 +1,5 @@
 include_recipe 'system::pre_checks'
+include_recipe 'system::cron'
 include_recipe 'system::environment'
 include_recipe 'system::locale'
 include_recipe 'system::users'
