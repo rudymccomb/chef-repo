@@ -3,10 +3,6 @@
     try_files $uri $uri/ /index.html;
   }
 
-  location ~ .php/ { ## Forward paths like /js/index.php/x.js to relevant handler
-    rewrite ^(.*.php)/ $1 last;
-  }
-
   <%- if @dataroot %>
   location /dataroot/ {
     internal;
