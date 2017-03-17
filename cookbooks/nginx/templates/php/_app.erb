@@ -1,7 +1,13 @@
 # begin _phpapp
   location / {
-    try_files $uri $uri/ /index.html;
+    try_files $uri $uri/ <%= @rewrite ? '@rewrite' : '/index.html' %>;
   }
+
+  <%- if @rewrite %>
+  location @rewrite {
+    rewrite ^/(.*)$ /index.php?q=$1;
+  }
+  <%- end %>
 
   <%- if @dataroot %>
   location /dataroot/ {
