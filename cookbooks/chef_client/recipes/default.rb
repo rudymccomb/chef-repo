@@ -1,5 +1,6 @@
 include_recipe 'chef-client'
 
 chef_ingredient 'chef' do
-  action :upgrade
+  action  :install
+  version '12.19.36'
 end
