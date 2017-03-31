@@ -19,7 +19,7 @@
 
   location ~ [^/]\.php(/|$) {
     fastcgi_index index.php;
-    fastcgi_pass  unix:<%= @sock %>;
+    fastcgi_pass  <%= @server %>;
 
     fastcgi_split_path_info  ^(.+\.php)(/.+)$;
 

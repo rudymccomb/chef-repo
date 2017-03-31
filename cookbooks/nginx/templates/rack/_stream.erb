@@ -1,5 +1,5 @@
 # begin _app_stream
 upstream app_stream {
-  server unix:<%= @sock %> fail_timeout=0;
+  server <%= @server %> fail_timeout=0;
 }
 # end _app_stream

@@ -1,12 +1,13 @@
 include_recipe 'chef_nginx'
 include_recipe 'openssl::upgrade'
 
-sites         = Array node['nginx']['sites'] || [{ 'name' => node['fqdn'] }]
-config_dir    = node['nginx']['dir']
-is_production = node['virtualization']['system'] != 'vbox'
-default_sock  = {
-  'rack' =>  '/run/unicorn/unicorn.sock',
-  'php'  =>  '/var/run/php-fpm.sock'
+sites          = Array node['nginx']['sites'] || [{ 'name' => node['fqdn'] }]
+config_dir     = node['nginx']['dir']
+is_production  = node['virtualization']['system'] != 'vbox'
+default_server = {
+  'rack' =>  'unix:/run/unicorn/unicorn.sock',
+  'node' =>  'http://127.0.0.1:8080',
+  'php'  =>  'unix:/var/run/php-fpm.sock'
 }
 
 if is_production
@@ -19,7 +20,7 @@ end
 
 sites.each_with_index do |site, i|
   template = site['template'] || node['nginx']['template']
-  sock     = site['sock']     || default_sock[template]
+  server   = site['server']   || default_server[template]
   site_dir = site['site_dir'] || "#{node['nginx']['www_dir']}/#{site['name']}"
 
   nginx_site site['name'] do
@@ -32,7 +33,7 @@ sites.each_with_index do |site, i|
               disable_hsts:       node['nginx']['disable_hsts'],
               site_dir:           site_dir,
               template:           template,
-              sock:               sock,
+              server:             server,
               deferred:           i == 0
   end
 end
