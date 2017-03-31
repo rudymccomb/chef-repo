@@ -5,15 +5,15 @@ deployer_group = value_for_platform_family(
 
 group deployer_group
 
+ohai 'reload' do
+  action :nothing
+  plugin 'etc'
+end
+
 search(:users, "*:*").each do |user_data|
   login = user_data['id']
   home  = login == 'root' ? '/root' : "/home/#{login}"
   group = user_data['deployer'] && deployer_group
-
-  ohai 'reload' do
-    action :nothing
-    plugin 'etc'
-  end
 
   user login do
     group       user_data['group'] || group
