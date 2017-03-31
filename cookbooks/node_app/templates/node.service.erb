@@ -1,0 +1,22 @@
+[Unit]
+Description=node
+Requires=<%= @requires.join(' ') %>
+After=<%= @requires.join(' ') %>
+
+[Service]
+User=<%= @user %>
+Group=<%= @group %>
+WorkingDirectory=<%= @base_dir %>/current
+SyslogIdentifier=node
+StandardOutput=syslog
+StandardError=syslog
+<%- @env.each do |env_variable| %>
+Environment=<%= env_variable['name'] %>=<%= env_variable['value'] %>
+<%- end %>
+
+ExecStart=<%= @node_path %> <%= @entrypoint %>
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
