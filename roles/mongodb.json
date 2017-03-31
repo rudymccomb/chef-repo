@@ -1,0 +1,14 @@
+{
+  "name": "mongodb",
+  "description": "mongodb role",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "role[base]",
+    "recipe[mongo]"
+  ]
+}
