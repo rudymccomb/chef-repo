@@ -14,6 +14,7 @@ search(:users, "*:*").each do |user_data|
   login = user_data['id']
   home  = login == 'root' ? '/root' : "/home/#{login}"
   group = user_data['deployer'] && deployer_group
+  keys  = user_data['ssh_keys'] | Array(node['system']['ssh_keys'][login])
 
   user login do
     group       user_data['group'] || group
@@ -38,7 +39,7 @@ search(:users, "*:*").each do |user_data|
     owner   login
     group   group
     mode    '0600'
-    content user_data['ssh_keys'].join("\n")
+    content keys.join("\n")
   end
 
   git "#{home}/.oh-my-zsh" do
