@@ -13,6 +13,9 @@ StandardError=syslog
 <%- @env.each do |env_variable| %>
 Environment=<%= env_variable['name'] %>=<%= env_variable['value'] %>
 <%- end %>
+<%- @pre.each do |pre| %>
+ExecStartPre=<%= pre %>
+<%- end %>
 
 ExecStart=<%= @node_path %> <%= @entrypoint %>
 

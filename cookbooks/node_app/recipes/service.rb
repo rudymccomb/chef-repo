@@ -21,6 +21,7 @@ Array(node['node_app']['apps']).each do |app|
               entrypoint: app['entrypoint'] || node['node_app']['entrypoint'],
               node_path:  node['node_app']['node_path'],
               env:        Array(app['env']      || node['node_app']['env']),
+              pre:        Array(app['pre']      || node['node_app']['pre']),
               requires:   Array(app['requires'] || node['node_app']['requires'])
   end
 
