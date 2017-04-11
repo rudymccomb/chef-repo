@@ -1,5 +1,5 @@
 [Unit]
-Description=node
+Description=node-<%= @name %>
 Requires=<%= @requires.join(' ') %>
 After=<%= @requires.join(' ') %>
 
@@ -7,7 +7,7 @@ After=<%= @requires.join(' ') %>
 User=<%= @user %>
 Group=<%= @group %>
 WorkingDirectory=<%= @base_dir %>/current
-SyslogIdentifier=node
+SyslogIdentifier=node-<%= @name %>
 StandardOutput=syslog
 StandardError=syslog
 <%- @env.each do |env_variable| %>

@@ -9,7 +9,9 @@ execute 'systemctl' do
 end
 
 Array(node['node_app']['apps']).each do |app|
-  template "#{units_path}/#{app['name']}.service" do
+  service_path = "#{units_path}/#{app['name']}.service"
+
+  template service_path do
     source    'node.service.erb'
     owner     'root'
     group     'root'
@@ -19,6 +21,7 @@ Array(node['node_app']['apps']).each do |app|
               group:      app['group']      || node['node_app']['group'],
               base_dir:   app['base_dir']   || node['node_app']['base_dir'],
               entrypoint: app['entrypoint'] || node['node_app']['entrypoint'],
+              name:       app['name'],
               node_path:  node['node_app']['node_path'],
               env:        Array(app['env']      || node['node_app']['env']),
               pre:        Array(app['pre']      || node['node_app']['pre']),
@@ -26,6 +29,7 @@ Array(node['node_app']['apps']).each do |app|
   end
 
   service app['name'] do
-    action :enable
+    action     :enable
+    subscribes :restart, "template[#{service_path}]", :immediately
   end
 end
