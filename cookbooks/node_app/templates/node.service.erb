@@ -19,6 +19,7 @@ ExecStartPre=<%= pre %>
 
 ExecStart=<%= @node_path %> <%= @entrypoint %>
 
+RestartSec=5
 Restart=on-failure
 
 [Install]
