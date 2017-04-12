@@ -4,6 +4,7 @@ Requires=<%= @requires.join(' ') %>
 After=<%= @requires.join(' ') %>
 
 [Service]
+Type=simple
 User=<%= @user %>
 Group=<%= @group %>
 WorkingDirectory=<%= @base_dir %>/current
@@ -18,6 +19,8 @@ ExecStartPre=<%= pre %>
 <%- end %>
 
 ExecStart=<%= @node_path %> <%= @entrypoint %>
+
+ExecStop=/bin/kill -s QUIT $MAINPID
 
 RestartSec=1
 Restart=on-failure
