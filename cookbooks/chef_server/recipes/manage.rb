@@ -1,6 +1,6 @@
 chef_ingredient 'manage' do
   action   :install
-  version  '2.4.5'
+  version  '2.5.1'
   config   'disable_sign_up true'
   notifies :reconfigure, 'chef_ingredient[chef-server]', :immediately
 end

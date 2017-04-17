@@ -12,7 +12,7 @@ end
 
 chef_ingredient 'chef-server' do
   action  [:install, :reconfigure]
-  version '12.13.0'
+  version '12.14.0'
   config  config_options.join("\n")
 end
 

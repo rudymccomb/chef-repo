@@ -2,7 +2,7 @@ chef_server = "https://#{node['fqdn']}"
 
 chef_ingredient 'reporting' do
   action   :install
-  version  '1.6.7'
+  version  '1.7.1'
   notifies :reconfigure, 'chef_ingredient[chef-server]', :immediately
 end
 
