@@ -4,11 +4,6 @@ units_path    = value_for_platform_family(
   'default' => '/lib/systemd/system'
 )
 
-execute 'systemctl' do
-  command 'systemctl daemon-reload'
-  action  :nothing
-end
-
 template "#{units_path}/sidekiq.service" do
   source    'sidekiq.service.erb'
   owner     'root'

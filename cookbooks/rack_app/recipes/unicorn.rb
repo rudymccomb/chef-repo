@@ -8,11 +8,6 @@ requires      = value_for_platform_family(
   'default' => node.recipe?('rack_app::sidekiq') ? ['redis.service']        : []
 )
 
-execute 'systemctl' do
-  command 'systemctl daemon-reload'
-  action  :nothing
-end
-
 template "#{units_path}/unicorn.service" do
   source    'unicorn.service.erb'
   owner     'root'

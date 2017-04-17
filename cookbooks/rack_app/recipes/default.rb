@@ -1,3 +1,4 @@
+include_recipe 'rack_app::systemctl'
 include_recipe 'rack_app::rbenv'
 include_recipe 'rack_app::unicorn'
 include_recipe 'rack_app::logrotate'
