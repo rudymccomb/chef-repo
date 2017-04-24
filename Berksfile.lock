@@ -31,7 +31,8 @@ DEPENDENCIES
     path: cookbooks/system
 
 GRAPH
-  acme (2.0.0)
+  acme (3.0.0)
+    compat_resource (>= 12.19)
   apt (6.1.0)
   ark (3.0.0)
     build-essential (>= 0.0.0)
