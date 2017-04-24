@@ -11,7 +11,7 @@ if node.role?('web')
 end
 
 chef_ingredient 'chef-server' do
-  action  [:install, :reconfigure]
+  action  :upgrade
   version '12.14.0'
   config  config_options.join("\n")
 end
