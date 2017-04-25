@@ -7,5 +7,5 @@ chef_ingredient 'reporting' do
 end
 
 ingredient_config 'reporting' do
-  notifies :reconfigure, 'chef_ingredient[chef-server]'
+  notifies :reconfigure, 'chef_ingredient[reporting]'
 end
