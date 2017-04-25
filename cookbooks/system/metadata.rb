@@ -4,12 +4,11 @@ maintainer_email 'francocatena@gmail.com'
 license 'mit'
 description 'Installs/Configures system'
 long_description 'Installs/Configures system'
-depends 'build-essential'
 version '0.1.0'
-depends 'locale'
-depends 'selinux'
-depends 'sudo'
-depends 'swap_tuning'
+
+%w(build-essential locale selinux sudo swap).each do |cookbook|
+  depends cookbook
+end
 
 # The `issues_url` points to the location where issues for this cookbook are
 # tracked.  A `View Issues` link will be displayed on this cookbook's page when
