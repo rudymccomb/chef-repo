@@ -12,7 +12,7 @@ default_server = {
 
 if is_production
   openssl_dhparam "#{config_dir}/dhparams.pem" do
-    key_length 3072
+    key_length 4096
     notifies   :reload, 'service[nginx]', :delayed
     not_if     { File.exist? "#{config_dir}/dhparams.pem" }
   end
