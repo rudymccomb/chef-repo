@@ -5,7 +5,6 @@ license 'mit'
 description 'Installs/Configures the server to receive a rack application'
 long_description 'Installs/Configures the server to receive a rack application'
 depends 'ruby_rbenv'
-depends 'ruby_build'
 version '0.1.0'
 
 # The `issues_url` points to the location where issues for this cookbook are
