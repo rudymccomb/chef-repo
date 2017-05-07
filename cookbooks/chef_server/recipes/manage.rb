@@ -1,6 +1,6 @@
 chef_ingredient 'manage' do
   action         :upgrade
-  version        '2.5.1'
+  version        '2.5.3'
   config         'disable_sign_up true'
   accept_license true
 end
