@@ -5,6 +5,7 @@
   "json_class": "Chef::Role",
   "default_attributes": {
     "nginx": {
+      "disable_hsts": true,
       "sites": [
         { "name": "mawidabp.com" }
       ]
