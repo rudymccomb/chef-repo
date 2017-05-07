@@ -5,7 +5,7 @@ deployer_group = value_for_platform_family(
 
 group deployer_group
 
-ohai 'reload' do
+ohai 'reload_passwd' do
   action :nothing
   plugin 'etc'
 end
@@ -21,7 +21,7 @@ search(:users, "*:*").each do |user_data|
     shell       user_data['shell']
     comment     user_data['comment']
     home        home
-    notifies    :reload, 'ohai[reload]', :immediately
+    notifies    :reload, 'ohai[reload_passwd]', :immediately
     manage_home true
   end
 
