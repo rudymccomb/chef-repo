@@ -12,7 +12,7 @@ end
 
 chef_ingredient 'chef-server' do
   action  :upgrade
-  version '12.15.6'
+  version node['chef_server']['version']
   config  config_options.join("\n")
 end
 

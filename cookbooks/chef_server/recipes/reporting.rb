@@ -2,7 +2,7 @@ chef_server = "https://#{node['fqdn']}"
 
 chef_ingredient 'reporting' do
   action         :upgrade
-  version        '1.7.1'
+  version        node['chef_server']['reporting_version']
   accept_license true
 end
 

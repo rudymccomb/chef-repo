@@ -1,6 +1,6 @@
 chef_ingredient 'manage' do
   action         :upgrade
-  version        '2.5.3'
+  version        node['chef_server']['manage_version']
   config         'disable_sign_up true'
   accept_license true
 end
