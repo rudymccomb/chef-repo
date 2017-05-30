@@ -1,5 +1,7 @@
-selinux_install 'selinux'
+if node['platform_family'] == 'rhel'
+  selinux_install 'selinux'
 
-selinux_state 'disabled' do
-  action :disabled
+  selinux_state 'disabled' do
+    action :disabled
+  end
 end
