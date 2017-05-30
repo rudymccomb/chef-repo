@@ -1,30 +1,5 @@
 set nocompatible
 
-if has('syntax')
-  syntax on
-endif
-
-if has('autocmd')
-  filetype plugin indent on
-  augroup vimrcEx
-    autocmd!
-    " Remember last position in file
-    autocmd BufReadPost *
-      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal g`\"" |
-      \ endif
-
-    autocmd! BufRead,BufNewFile *.cap setfiletype ruby
-  augroup END
-endif
-
-if has('multi_byte')
-  set encoding=utf-8
-  setglobal fileencoding=utf-8
-  set fileencodings=ucs-bom,utf-8,latin1
-  set nobomb
-endif
-
 set t_Co=256
 colorscheme elflord
 
@@ -59,17 +34,6 @@ set ttyfast
 set history=10000
 set pastetoggle=<C-p>
 
-" Maintain undo history between sessions
-if exists('+undofile') && exists('+undodir')
-  set undofile
-  set undodir=~/.vim/undodir
-endif
-
-if exists('+writebackup')
-  set nobackup
-  set writebackup
-endif
-
 set directory=~/.vim/backup
 
 set ignorecase smartcase
@@ -81,7 +45,7 @@ set showtabline=2
 set laststatus=2
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
 
-let mapleader=','
+let mapleader=' '
 
 set timeout
 set timeoutlen=1000
@@ -132,3 +96,39 @@ nnoremap Y y$
 " Navigate through quickfix
 map <F3> :cprev<CR>
 map <F4> :cnext<CR>
+
+if has('syntax')
+  syntax on
+endif
+
+if has('autocmd')
+  filetype plugin indent on
+  augroup vimrcEx
+    autocmd!
+    " Remember last position in file
+    autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+      \   exe "normal g`\"" |
+      \ endif
+
+    autocmd! BufRead,BufNewFile *.cap setfiletype ruby
+  augroup END
+endif
+
+if has('multi_byte')
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  set fileencodings=ucs-bom,utf-8,latin1
+  set nobomb
+endif
+
+" Maintain undo history between sessions
+if exists('+undofile') && exists('+undodir')
+  set undofile
+  set undodir=~/.vim/undodir
+endif
+
+if exists('+writebackup')
+  set nobackup
+  set writebackup
+endif
